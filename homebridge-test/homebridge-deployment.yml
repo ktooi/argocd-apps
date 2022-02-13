@@ -14,8 +14,20 @@ spec:
         app: homebridge
     spec:
       containers:
-      - image: oznu/homebridge:2022-02-09
-        name: homebridge
-        ports:
-        - containerPort: 80
+        - image: oznu/homebridge:2022-02-09
+          name: homebridge
+          ports:
+            - containerPort: 8581
+          env:
+            - name: TZ
+              value: Asia/Tokyo
+            - name: PGID
+              value: 1000
+            - name: PUID
+              value: 1000
+            - name: HOMEBRIDGE_CONFIG_UI
+              value: 1
+            - name: HOMEBRIDGE_CONFIG_UI_PORT
+              value: 8581
+
 
