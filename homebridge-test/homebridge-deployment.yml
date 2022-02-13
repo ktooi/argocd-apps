@@ -22,12 +22,12 @@ spec:
             - name: TZ
               value: Asia/Tokyo
             - name: PGID
-              value: 1000
+              value: "1000"
             - name: PUID
-              value: 1000
+              value: "1000"
             - name: HOMEBRIDGE_CONFIG_UI
-              value: 1
+              value: "1"
             - name: HOMEBRIDGE_CONFIG_UI_PORT
-              value: 8581
+              value: "8581"
 
 
