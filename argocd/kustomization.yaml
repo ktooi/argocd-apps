@@ -1,6 +1,8 @@
-bases:
-- github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.3.3
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
+resources:
+  - github.com/argoproj/argo-cd/manifests/cluster-install?ref=v2.3.3
 # additional resources like ingress rules, cluster and repository secrets.
 #resources:
 #  - clusters-secrets.yaml
