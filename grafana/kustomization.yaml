@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
   - base
-  - overlays/development/
+
+patchesStrategicMerge:
+  - overlays/development/grafana-svc.yaml
 
 namespace: grafana
