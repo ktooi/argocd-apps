@@ -105,12 +105,10 @@ spec:
   internalTrafficPolicy: Cluster
   ports:
   - name: http
-    nodePort: 31619
     port: 80
     protocol: TCP
     targetPort: 8080
   - name: https
-    nodePort: 31776
     port: 443
     protocol: TCP
     targetPort: 8080
