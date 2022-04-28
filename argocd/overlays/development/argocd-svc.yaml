@@ -4,4 +4,4 @@ kind: Service
 metadata:
   name: argocd-server
 spec:
-  loadBalancerIP: 172.18.128.16
+  loadBalancerIP: 172.18.128.17
