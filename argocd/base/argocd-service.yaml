@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/name: argocd-dex-server
     app.kubernetes.io/part-of: argocd
   name: argocd-dex-server
-  namespace: argocd
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -39,7 +38,6 @@ metadata:
     app.kubernetes.io/name: argocd-metrics
     app.kubernetes.io/part-of: argocd
   name: argocd-metrics
-  namespace: argocd
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -63,7 +61,6 @@ metadata:
     app.kubernetes.io/name: argocd-redis
     app.kubernetes.io/part-of: argocd
   name: argocd-redis
-  namespace: argocd
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -87,7 +84,6 @@ metadata:
     app.kubernetes.io/name: argocd-repo-server
     app.kubernetes.io/part-of: argocd
   name: argocd-repo-server
-  namespace: argocd
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -115,7 +111,6 @@ metadata:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
   name: argocd-server
-  namespace: argocd
 spec:
   allocateLoadBalancerNodePorts: true
   externalTrafficPolicy: Cluster
@@ -147,7 +142,6 @@ metadata:
     app.kubernetes.io/name: argocd-server-metrics
     app.kubernetes.io/part-of: argocd
   name: argocd-server-metrics
-  namespace: argocd
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
