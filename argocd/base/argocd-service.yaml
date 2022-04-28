@@ -9,9 +9,6 @@ metadata:
   name: argocd-dex-server
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: http
     port: 5556
@@ -40,9 +37,6 @@ metadata:
   name: argocd-metrics
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: metrics
     port: 8082
@@ -63,9 +57,6 @@ metadata:
   name: argocd-redis
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: tcp-redis
     port: 6379
@@ -86,9 +77,6 @@ metadata:
   name: argocd-repo-server
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: server
     port: 8081
@@ -115,9 +103,6 @@ spec:
   allocateLoadBalancerNodePorts: true
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: http
     nodePort: 31619
@@ -144,9 +129,6 @@ metadata:
   name: argocd-server-metrics
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - name: metrics
     port: 8083
