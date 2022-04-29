@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - base/argocd-service.yaml
+  - base/argocd-deployment.yaml
 # additional resources like ingress rules, cluster and repository secrets.
 #resources:
 #  - clusters-secrets.yaml
