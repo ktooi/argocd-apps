@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: subsonic
+spec:
+  ports:
+  - port: 4040
+    targetPort: http-subsonic
+  selector:
+    app: subsonic
+

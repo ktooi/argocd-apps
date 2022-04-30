@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subsonic
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: subsonic
+  template:
+    metadata:
+      labels:
+        app: subsonic
+    spec:
+      containers:
+        - image: hydria/subsonic:6.1.6
+          name: subsonic
+          ports:
+            - containerPort: 4040
+              name: http-subsonic
+              protocol: TCP
