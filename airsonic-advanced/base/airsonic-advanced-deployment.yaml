@@ -19,10 +19,10 @@ spec:
           name: airsonic-advanced
           ports:
             - containerPort: 4040
-              name: http-airsonic-advanced
+              name: http-airsonic
               protocol: TCP
             - containerPort: 4041
-              name: upnp-airsonic-advanced
+              name: upnp-airsonic
           env:
             - name: TZ
               value: Asia/Tokyo
