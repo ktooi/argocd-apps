@@ -5,10 +5,10 @@ metadata:
   name: airsonic-advanced
 spec:
   ports:
-  - port: 4040
-    targetPort: http-airsonic
-  - port: 4041
-    targetPort: upnp-airsonic
+    - port: 4040
+      targetPort: http-airsonic
+    #- port: 4041
+    #  targetPort: upnp-airsonic
   selector:
     app: airsonic-advanced
 
