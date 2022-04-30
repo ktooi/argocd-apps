@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airsonic-advanced
+spec:
+  ports:
+  - port: 4040
+    targetPort: http-airsonic-advanced
+  - port: 4041
+    targetPort: upnp-airsonic-advanced
+  selector:
+    app: airsonic-advanced
+

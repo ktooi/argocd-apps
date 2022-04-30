@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airsonic-advanced
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: airsonic-advanced
+  template:
+    metadata:
+      labels:
+        app: airsonic-advanced
+    spec:
+      containers:
+        - image: airsonicadvanced/airsonic-advanced:10.6.0
+          name: airsonic-advanced
+          ports:
+            - containerPort: 4040
+              name: http-airsonic-advanced
+              protocol: TCP
+            - containerPort: 4041
+              name: upnp-airsonic-advanced
+          env:
+            - name: TZ
+              value: Asia/Tokyo
+            - name: JAVA_OPTS
+              value: -Dserver.forward-headers-strategy=native
+
