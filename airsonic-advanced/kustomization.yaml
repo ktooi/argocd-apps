@@ -6,6 +6,8 @@ resources:
   - base
 
 patchesStrategicMerge:
+  - overlays/development/airsonic-advanced-deployment.yaml
+  - overlays/development/airsonic-advanced-pv.yaml
   - overlays/development/airsonic-advanced-service.yaml
 
 namespace: airsonic-advanced
