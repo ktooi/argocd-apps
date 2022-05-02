@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: airsonic-advanced
 spec:
+  selector:
+    matchLabels:
+      app: airsonic-advanced
   template:
     spec:
       containers:
