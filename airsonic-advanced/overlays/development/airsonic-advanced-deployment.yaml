@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: airsonic-advanced
+spec:
+  template:
+    spec:
+      containers:
+        - name: airsonic-advanced
+          volumeMounts:
+            - mountPath: "/var/music"
+              name: airsonic-music
+      volumes:
+        - name: airsonic-music
+          persistentVolume:
+            claimName: airsonic-pvc-music
+
