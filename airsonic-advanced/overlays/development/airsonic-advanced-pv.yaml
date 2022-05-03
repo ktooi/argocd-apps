@@ -14,7 +14,7 @@ spec:
     - ReadOnlyMany
   nfs:
     server: 192.168.0.32
-    path: "/srv/dev-disk-by-id-md-name-openmediavault-volume1/Public/Music/"
+    path: "/"
   mountOptions:
     - nfsvers=4.2
 
