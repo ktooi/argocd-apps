@@ -28,4 +28,7 @@ spec:
               value: Asia/Tokyo
             - name: JAVA_OPTS
               value: -Dserver.forward-headers-strategy=native
-
+            - name: AIRSONIC_PORT
+              value: "4040"
+            - name: UPNP_PORT
+              value: "4041"
