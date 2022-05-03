@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: airsonic-deployment
+  name: airsonic
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: airsonic-advanced
+        app: airsonic
     spec:
       containers:
         - image: airsonicadvanced/airsonic-advanced:10.6.0
