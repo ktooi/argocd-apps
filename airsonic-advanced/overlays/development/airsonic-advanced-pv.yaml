@@ -1,7 +1,8 @@
+---
 apiVersion: apps/v1
 kind: PersistentVolume
 metadata:
-  name: airsonic-pv
+  name: airsonic-pv-music
   annotations:
     volume.beta.kubernetes.io/storage-class: "slow"
   labels:
