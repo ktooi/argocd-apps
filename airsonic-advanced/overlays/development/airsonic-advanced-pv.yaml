@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: airsonic-pv-music
@@ -19,7 +19,7 @@ spec:
     - nfsvers=4.2
 
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: airsonic-pvc-music
