@@ -16,6 +16,6 @@ spec:
               name: airsonic-music
       volumes:
         - name: airsonic-music
-          persistentVolume:
+          persistentVolumeClaim:
             claimName: airsonic-pvc-music
 
