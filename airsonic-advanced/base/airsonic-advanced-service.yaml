@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: airsonic-advanced
+  name: airsonic
 spec:
   ports:
     - port: 4040
@@ -10,6 +10,6 @@ spec:
     #- port: 4041
     #  targetPort: upnp-airsonic
   selector:
-    app: airsonic-advanced
+    app: airsonic
   type: LoadBalancer
 
