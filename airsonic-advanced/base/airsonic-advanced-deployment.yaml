@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      name: airsonic
+      app: airsonic
   template:
     metadata:
       labels:
