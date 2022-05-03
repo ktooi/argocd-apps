@@ -14,7 +14,7 @@ spec:
     - ReadOnlyMany
   nfs:
     server: 192.168.0.32
-    path: "/"
+    path: "/Music"
   mountOptions:
     - nfsvers=4.2
 
@@ -34,4 +34,41 @@ spec:
   selector:
     matchLabels:
       name: "airsonic-pv-music"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: airsonic-pv-video
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "slow"
+  labels:
+    name: airsonic-pv-video
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    server: 192.168.0.32
+    path: "/Video"
+  mountOptions:
+    - nfsvers=4.2
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airsonic-pvc-video
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "slow"
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      name: "airsonic-pv-video"
 
