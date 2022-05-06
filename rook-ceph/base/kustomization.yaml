@@ -7,5 +7,6 @@ resources:
   - crds.yaml
   - operator.yaml
   - cluster.yaml
+  - toolbox.yaml
 
 namespace: rook-ceph
