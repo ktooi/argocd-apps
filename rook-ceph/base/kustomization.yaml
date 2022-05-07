@@ -8,5 +8,7 @@ resources:
   - operator.yaml
   - cluster.yaml
   - toolbox.yaml
+  - filesystem.yaml
+  - dashboard-loadbalancer.yaml
 
 namespace: rook-ceph
