@@ -72,3 +72,42 @@ spec:
     matchLabels:
       name: "airsonic-pv-video"
 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airsonic-pvc-airsonic
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-cephfs
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airsonic-pvc-playlists
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-cephfs
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airsonic-pvc-podcasts
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-cephfs
+

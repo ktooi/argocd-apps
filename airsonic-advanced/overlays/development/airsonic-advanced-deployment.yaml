@@ -13,6 +13,12 @@ spec:
               name: airsonic-music
             - mountPath: "/var/video"
               name: airsonic-video
+            - mountPath: "/var/airsonic"
+              name: airsonic-airsonic
+            - mountPath: "/var/playlists"
+              name: airsonic-playlists
+            - mountPath: "/var/podcasts"
+              name: airsonic-podcasts
       volumes:
         - name: airsonic-music
           persistentVolumeClaim:
@@ -20,4 +26,12 @@ spec:
         - name: airsonic-video
           persistentVolumeClaim:
             claimName: airsonic-pvc-video
-
+        - name: airsonic-airsonic
+          persistentVolumeClaim:
+            claimName: airsonic-pvc-airsonic
+        - name: airsonic-playlists
+          persistentVolumeClaim:
+            claimName: airsonic-pvc-playlists
+        - name: airsonic-podcasts
+          persistentVolumeClaim:
+            claimName: airsonic-pvc-podcasts
