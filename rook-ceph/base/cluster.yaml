@@ -221,8 +221,10 @@ spec:
     mgr: system-cluster-critical
     #crashcollector: rook-ceph-crashcollector-priority-class
   storage: # cluster level storage configuration and selection
-    useAllNodes: true
-    useAllDevices: true
+    #useAllNodes: true
+    useAllNodes: false
+    #useAllDevices: true
+    useAllDevices: false
     #deviceFilter:
     config:
       # crushRoot: "custom-root" # specify a non-default root label for the CRUSH map
@@ -245,6 +247,16 @@ spec:
     #   - name: "172.17.4.301"
     #     deviceFilter: "^sd."
     # when onlyApplyOSDPlacement is false, will merge both placement.All() and placement.osd
+    nodes:
+      - name: "k8s-worker01"
+        devices: # specific devices to use for storage can be specified for each node
+          - name: "sdb"
+      - name: "k8s-worker02"
+        devices: # specific devices to use for storage can be specified for each node
+          - name: "sdb"
+      - name: "k8s-worker03"
+        devices: # specific devices to use for storage can be specified for each node
+          - name: "sdb"
     onlyApplyOSDPlacement: false
   # The section for configuring management of daemon disruptions during upgrade or fencing.
   disruptionManagement:
