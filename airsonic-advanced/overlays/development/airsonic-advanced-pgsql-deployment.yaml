@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airsonic-pgsql
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: airsonic-pgsql
+  template:
+    metadata:
+      labels:
+        app: airsonic-pgsql
+    spec:
+      containers:
+        - image: postgres:latest
+          name: airsonic-advanced-pgsql
+          env:
+            - name: POSTGRES_DB
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD:
+              value: postgres
+          volumeMounts:
+            - mountPath: "/var/lib/postgresql/data"
+              name: airsonic-pgsql
+      volumes:
+        - name: airsonic-pgsql
+          persistentVolumeClaim:
+            claimName: airsonic-pvc-pgsql

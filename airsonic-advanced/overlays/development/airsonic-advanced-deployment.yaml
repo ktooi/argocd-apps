@@ -8,6 +8,15 @@ spec:
     spec:
       containers:
         - name: airsonic-advanced
+          env:
+            - name: spring_datasource_url
+              value: 'jdbc:postgresql://airsonic-advanced-pgsql:5432/postgres?stringtype=unspecified&raiseExceptionOnSilentRollback=false'
+            - name: spring_datasource_username
+              value: postgres
+            - name: spring_datasource_password
+              value: postgres
+            - name: spring_liquibase_parameters_userTableQuote
+              value: '"'
           volumeMounts:
             - mountPath: "/var/music"
               name: airsonic-music

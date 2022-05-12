@@ -111,3 +111,16 @@ spec:
       storage: 1Gi
   storageClassName: rook-cephfs
 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airsonic-pvc-pgsql
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rook-cephfs
+
