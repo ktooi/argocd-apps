@@ -10,5 +10,6 @@ resources:
   - toolbox.yaml
   - filesystem.yaml
   - dashboard-loadbalancer.yaml
+  - storageclass.yaml
 
 namespace: rook-ceph
