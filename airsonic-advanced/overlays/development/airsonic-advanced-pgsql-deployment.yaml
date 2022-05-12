@@ -22,7 +22,7 @@ spec:
               value: postgres
             - name: POSTGRES_USER
               value: postgres
-            - name: POSTGRES_PASSWORD:
+            - name: POSTGRES_PASSWORD
               value: postgres
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
