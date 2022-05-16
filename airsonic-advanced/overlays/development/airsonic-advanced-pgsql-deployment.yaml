@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: airsonic-pgsql
+      app: airsonic
       tier: backend
   template:
     metadata:
