@@ -11,5 +11,6 @@ spec:
     #  targetPort: upnp-airsonic
   selector:
     app: airsonic
+    tier: frontend
   type: LoadBalancer
 

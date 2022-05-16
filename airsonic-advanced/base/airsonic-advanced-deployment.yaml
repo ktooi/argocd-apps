@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: airsonic
+      tier: frontend
   template:
     metadata:
       labels:
         app: airsonic
+        tier: frontend
     spec:
       containers:
         - image: airsonicadvanced/airsonic-advanced:10.6.0

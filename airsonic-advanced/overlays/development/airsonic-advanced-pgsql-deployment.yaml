@@ -2,17 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: airsonic-pgsql
+  name: airsonic
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: airsonic-pgsql
+      tier: backend
   template:
     metadata:
       labels:
-        app: airsonic-pgsql
+        app: airsonic
+        tier: backend
     spec:
       containers:
         - image: postgres:latest
