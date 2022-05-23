@@ -257,7 +257,8 @@ spec:
       - name: "k8s-worker03"
         devices: # specific devices to use for storage can be specified for each node
           - name: "sdb"
-      - name: "k8s-worker-amd01"
+      - name: "172.17.0.64"
+      #- name: "k8s-worker-amd01"
         devices: # specific devices to use for storage can be specified for each node
           - name: "sda"
     onlyApplyOSDPlacement: false
