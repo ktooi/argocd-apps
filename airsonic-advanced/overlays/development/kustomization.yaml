@@ -6,8 +6,8 @@ resources:
   - ../../base
   - airsonic-advanced-pv.yaml
   - airsonic-advanced-pgsql-service.yaml
+  - airsonic-advanced-pgsql-deployment.yaml
 
 patchesStrategicMerge:
   - airsonic-advanced-deployment.yaml
   - airsonic-advanced-service.yaml
-  - airsonic-advanced-pgsql-deployment.yaml
