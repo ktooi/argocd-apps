@@ -5,9 +5,9 @@ kind: Kustomization
 resources:
   - ../../base
   - airsonic-advanced-pv.yaml
+  - airsonic-advanced-pgsql-service.yaml
 
 patchesStrategicMerge:
   - airsonic-advanced-deployment.yaml
   - airsonic-advanced-service.yaml
   - airsonic-advanced-pgsql-deployment.yaml
-  - airsonic-advanced-pgsql-service.yaml
