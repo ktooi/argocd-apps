@@ -5,9 +5,8 @@ metadata:
   name: pgsql-svc
 spec:
   selector:
-    matchLabels:
-      app: airsonic
-      tier: backend
+    app: airsonic
+    tier: backend
   ports:
   - port: 5432
     targetPort: 5432
