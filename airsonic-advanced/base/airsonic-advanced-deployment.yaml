@@ -17,7 +17,7 @@ spec:
         tier: frontend
     spec:
       containers:
-        - image: airsonicadvanced/airsonic-advanced:10.6.0
+        - image: airsonicadvanced/airsonic-advanced:edge-11.0.0-SNAPSHOT.20220418221611
           name: airsonic-advanced
           ports:
             - containerPort: 4040
