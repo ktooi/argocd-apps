@@ -10,7 +10,7 @@ spec:
         - name: airsonic-advanced
           env:
             - name: spring_datasource_url
-              value: 'jdbc:postgresql://pgsql-svc:5432/postgres?stringtype=unspecified&raiseExceptionOnSilentRollback=false'
+              value: 'jdbc:postgresql://pgsql-svc:5432/airsonic?stringtype=unspecified&raiseExceptionOnSilentRollback=false'
             - name: spring_datasource_username
               value: postgres
             - name: spring_datasource_password
