@@ -9,5 +9,6 @@ resources:
   - nextcloud-config.yaml
   - nextcloud-deployment.yaml
   - nextcloud-pvc.yaml
+  - redis-deployment.yaml
 
 namespace: nextcloud
