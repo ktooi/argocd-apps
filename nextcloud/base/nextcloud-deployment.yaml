@@ -14,7 +14,9 @@ spec:
     name: nextcloud
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: nextcloud-http
+      protocol: TCP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,19 +48,19 @@ spec:
         app.kubernetes.io/managed-by: argocd
     spec:
       containers:
-        - image: nextcloud:24.0.1-fpm-alpine
+        - image: nextcloud:24.0.1-apache
           name: nextcloud
           env:
-            - name: NEXTCLOUD_ADMIN_USER
-              valueFrom:
-                secretKeyRef:
-                  name: nextcloud-secret
-                  key: admin_username
-            - name: NEXTCLOUD_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: nextcloud-secret
-                  key: admin_password
+            #- name: NEXTCLOUD_ADMIN_USER
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: nextcloud-secret
+            #      key: admin_username
+            #- name: NEXTCLOUD_ADMIN_PASSWORD
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: nextcloud-secret
+            #      key: admin_password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               valueFrom:
                 configMapKeyRef:
@@ -102,7 +104,9 @@ spec:
             - mountPath: "/var/www/html/custom_apps"
               name: nextcloud-apps-volume
           ports:
-            - containerPort: 3306
+            - containerPort: 80
+              name: nextcloud-http
+              protocol: TCP
       volumes:
         - name: nextcloud-data-volume
           persistentVolumeClaim:
