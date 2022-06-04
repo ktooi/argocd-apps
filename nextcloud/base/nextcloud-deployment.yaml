@@ -54,16 +54,16 @@ spec:
         - image: nextcloud:24.0.1-apache
           name: nextcloud
           env:
-            #- name: NEXTCLOUD_ADMIN_USER
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: nextcloud-secret
-            #      key: admin_username
-            #- name: NEXTCLOUD_ADMIN_PASSWORD
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: nextcloud-secret
-            #      key: admin_password
+            - name: NEXTCLOUD_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: admin_username
+            - name: NEXTCLOUD_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secret
+                  key: admin_password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               valueFrom:
                 configMapKeyRef:
