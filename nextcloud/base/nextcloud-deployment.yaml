@@ -51,12 +51,12 @@ spec:
           env:
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: nextcloud-secret
                   key: admin_username
             - name: NEXTCLOUD_ADMIN_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: nextcloud-secret
                   key: admin_password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
