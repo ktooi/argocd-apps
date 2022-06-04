@@ -4,6 +4,6 @@ metadata:
   name: nextcloud-config
 data:
   trusted_domains: ""
-  update: 0
-  php_memory_limit: 512M
-  php_upload_limit: 512M
+  update: "0"
+  php_memory_limit: "512M"
+  php_upload_limit: "512M"

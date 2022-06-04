@@ -11,9 +11,7 @@ metadata:
     app.kubernetes.io/managed-by: argocd
 spec:
   selector:
-    matchLabels:
-      app.kubernetes.io/name: nextcloud
-      app.kubernetes.io/instance: nextcloud
+    name: nextcloud
   ports:
     - port: 80
       targetPort: 80
@@ -32,7 +30,7 @@ metadata:
 spec:
   replicas: 3
   revisionHistoryLimit: 3
-  slelector:
+  selector:
     matchLabels:
       app.kubernetes.io/name: nextcloud
       app.kubernetes.io/instance: nextcloud
@@ -53,32 +51,39 @@ spec:
           env:
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
-                name: nextcloud-secret
-                key: admin_username
+                configMapKeyRef:
+                  name: nextcloud-secret
+                  key: admin_username
             - name: NEXTCLOUD_ADMIN_PASSWORD
               valueFrom:
-                name: nextcloud-secret
-                key: admin_password
+                configMapKeyRef:
+                  name: nextcloud-secret
+                  key: admin_password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               valueFrom:
-                name: nextcloud-config
-                key: trusted_domains
+                configMapKeyRef:
+                  name: nextcloud-config
+                  key: trusted_domains
             - name: NEXTCLOUD_UPDATE
               valueFrom:
-                name: nextcloud-config
-                key: update
+                configMapKeyRef:
+                  name: nextcloud-config
+                  key: update
             - name: PHP_MEMORY_LIMIT
               valueFrom:
-                name: nextcloud-config
-                key: php_memory_limit
+                configMapKeyRef:
+                  name: nextcloud-config
+                  key: php_memory_limit
             - name: PHP_UPLOAD_LIMIT
               valueFrom:
-                name: nextcloud-config
-                key: php_upload_limit
+                configMapKeyRef:
+                  name: nextcloud-config
+                  key: php_upload_limit
             - name: MYSQL_DATABASE
               valueFrom:
-                name: nextcloud-mariadb-config
-                key: database
+                configMapKeyRef:
+                  name: nextcloud-mariadb-config
+                  key: database
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:

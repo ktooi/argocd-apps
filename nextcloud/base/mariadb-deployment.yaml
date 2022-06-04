@@ -11,9 +11,7 @@ metadata:
     app.kubernetes.io/managed-by: argocd
 spec:
   selector:
-    matchLabels:
-      app.kubernetes.io/name: mariadb
-      app.kubernetes.io/instance: nextcloud-mariadb
+    name: nextcloud-mariadb
   ports:
     - port: 3306
       targetPort: 3306
@@ -32,6 +30,7 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 3
+  serviceName: mariadb
   selector:
     matchLabels:
       app.kubernetes.io/name: mariadb
@@ -58,8 +57,9 @@ spec:
                   key: root_password
             - name: MARIADB_DATABASE
               valueFrom:
-                name: nextcloud-mariadb-config
-                key: database
+                configMapKeyRef:
+                  name: nextcloud-mariadb-config
+                  key: database
             - name: MARIADB_USER
               valueFrom:
                 secretKeyRef:
