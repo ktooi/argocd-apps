@@ -38,7 +38,7 @@ spec:
       app.kubernetes.io/instance: nextcloud-redis
       app.kubernetes.io/component: cache
       app.kubernetes.io/part-of: nextcloud
-  templates:
+  template:
     metadata:
       labels:
         app.kubernetes.io/name: redis
