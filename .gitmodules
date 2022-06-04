@@ -1,0 +1,9 @@
+[submodule "monitoring/prometheus-operator"]
+	path = monitoring/prometheus-operator
+	url = https://github.com/coreos/prometheus-operator.git
+[submodule "monitoring/prometheus-monitoring-guide"]
+	path = monitoring/prometheus-monitoring-guide
+	url = https://github.com/mateobur/prometheus-monitoring-guide.git
+[submodule "monitoring/kube-prometheus"]
+	path = monitoring/kube-prometheus
+	url = https://github.com/prometheus-operator/kube-prometheus.git
