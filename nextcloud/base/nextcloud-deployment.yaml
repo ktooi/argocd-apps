@@ -104,7 +104,7 @@ spec:
             - name: REDIS_HOST
               value: nextcloud-redis-svc
             - name: REDIS_PORT
-              value: 6379
+              value: "6379"
           volumeMounts:
             - mountPath: "/var/www/html/data"
               name: nextcloud-data-volume
