@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud-svc
+  labels:
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+    #app.kubernetes.io/version: "24.0.1"
+    app.kubernetes.io/component: web
+    app.kubernetes.io/part-of: nextcloud
+    app.kubernetes.io/managed-by: argocd
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nextcloud
+      app.kubernetes.io/instance: nextcloud
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud
+  labels:
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+    #app.kubernetes.io/version: "10.8.3"
+    app.kubernetes.io/component: web
+    app.kubernetes.io/part-of: nextcloud
+    app.kubernetes.io/managed-by: argocd
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3
+  slelector:
+    matchLabels:
+      app.kubernetes.io/name: nextcloud
+      app.kubernetes.io/instance: nextcloud
+      app.kubernetes.io/component: web
+      app.kubernetes.io/part-of: nextcloud
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nextcloud
+        app.kubernetes.io/instance: nextcloud
+        app.kubernetes.io/component: web
+        app.kubernetes.io/part-of: nextcloud
+        app.kubernetes.io/managed-by: argocd
+    spec:
+      containers:
+        - image: nextcloud:24.0.1-fpm-alpine
+          name: nextcloud
+          env:
+            - name: NEXTCLOUD_ADMIN_USER
+              valueFrom:
+                name: nextcloud-secret
+                key: admin_username
+            - name: NEXTCLOUD_ADMIN_PASSWORD
+              valueFrom:
+                name: nextcloud-secret
+                key: admin_password
+            - name: NEXTCLOUD_TRUSTED_DOMAINS
+              valueFrom:
+                name: nextcloud-config
+                key: trusted_domains
+            - name: NEXTCLOUD_UPDATE
+              valueFrom:
+                name: nextcloud-config
+                key: update
+            - name: PHP_MEMORY_LIMIT
+              valueFrom:
+                name: nextcloud-config
+                key: php_memory_limit
+            - name: PHP_UPLOAD_LIMIT
+              valueFrom:
+                name: nextcloud-config
+                key: php_upload_limit
+            - name: MYSQL_DATABASE
+              valueFrom:
+                name: nextcloud-mariadb-config
+                key: database
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-mariadb-secret
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-mariadb-secret
+                  key: password
+            - name: MYSQL_HOST
+              value: nextcloud-mariadb-svc
+          volumeMounts:
+            - mountPath: "/var/www/html/data"
+              name: nextcloud-data-volume
+            - mountPath: "/var/www/html/custom_apps"
+              name: nextcloud-apps-volume
+          ports:
+            - containerPort: 3306
+      volumes:
+        - name: nextcloud-data-volume
+          persistentVolumeClaim:
+            claimName: nextcloud-data-pvc
+        - name: nextcloud-apps-volume
+          persistentVolumeClaim:
+            claimName: nextcloud-apps-pvc
