@@ -101,6 +101,10 @@ spec:
                   key: password
             - name: MYSQL_HOST
               value: nextcloud-mariadb-svc
+            - name: REDIS_HOST
+              value: nextcloud-redis-svc
+            - name: REDIS_PORT
+              value: 6379
           volumeMounts:
             - mountPath: "/var/www/html/data"
               name: nextcloud-data-volume

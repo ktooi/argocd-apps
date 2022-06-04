@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud-redis-svc
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: nextcloud-redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: nextcloud
+    app.kubernetes.io/managed-by: argocd
+spec:
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: nextcloud-redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: nextcloud
+  ports:
+    - port: 6379
+      targetPort: redis
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-redis
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: nextcloud-redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: nextcloud
+    app.kubernetes.io/managed-by: argocd
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: nextcloud-redis
+      app.kubernetes.io/component: cache
+      app.kubernetes.io/part-of: nextcloud
+  templates:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: nextcloud-redis
+        app.kubernetes.io/component: cache
+        app.kubernetes.io/part-of: nextcloud
+        app.kubernetes.io/managed-by: argocd
+    spec:
+      containers:
+        - image: redis:7.0.0-alpine
+          name: nextcloud-redis
+          ports:
+            - containerPort: 6379
+              name: redis
+              protocol: TCP
