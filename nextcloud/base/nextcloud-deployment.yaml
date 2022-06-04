@@ -11,7 +11,10 @@ metadata:
     app.kubernetes.io/managed-by: argocd
 spec:
   selector:
-    name: nextcloud
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/component: web
+    app.kubernetes.io/part-of: nextcloud
   ports:
     - port: 80
       targetPort: nextcloud-http
