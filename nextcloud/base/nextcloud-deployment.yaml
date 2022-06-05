@@ -103,7 +103,7 @@ spec:
               value: nextcloud-mariadb-svc
             - name: REDIS_HOST
               value: nextcloud-redis-svc
-            - name: REDIS_PORT
+            - name: REDIS_HOST_PORT
               value: "6379"
           volumeMounts:
             - mountPath: "/var/www/html"
