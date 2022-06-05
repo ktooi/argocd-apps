@@ -105,6 +105,11 @@ spec:
               value: nextcloud-redis-svc
             - name: REDIS_HOST_PORT
               value: "6379"
+            - name: REDIS_HOST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-redis-secret
+                  key: password
           volumeMounts:
             - mountPath: "/var/www/html"
               name: nextcloud-volume

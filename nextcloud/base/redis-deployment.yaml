@@ -50,7 +50,14 @@ spec:
       containers:
         - image: redis:7.0.0-alpine
           name: nextcloud-redis
+          args: ["--requirepass", "${REDIS_HOST_PASSWORD}"]
           ports:
             - containerPort: 6379
               name: redis
               protocol: TCP
+          env:
+            - name: REDIS_HOST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-redis-secret
+                  key: password
