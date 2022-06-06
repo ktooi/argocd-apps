@@ -7,3 +7,19 @@ data:
   update: "0"
   php_memory_limit: "512M"
   php_upload_limit: "512M"
+  php_fpm_conf: |
+    server {
+        listen 80;
+        server_name localhost;
+        root /usr/share/nginx/html;
+        location / {
+            index index.html index.htm index.php;
+        }
+    
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000; (depending on your php-fpm socket configuration)
+            #fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+        }
+    }

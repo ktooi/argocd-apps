@@ -3,33 +3,32 @@ kind: Service
 metadata:
   name: nextcloud-svc
   labels:
-    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/name: nginx-fpm
     app.kubernetes.io/instance: nextcloud
     #app.kubernetes.io/version: "24.0.1"
-    app.kubernetes.io/component: web
+    app.kubernetes.io/component: nginx-fpm
     app.kubernetes.io/part-of: nextcloud
     app.kubernetes.io/managed-by: argocd
 spec:
   selector:
-    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/name: nginx-fpm
     app.kubernetes.io/instance: nextcloud
-    app.kubernetes.io/component: web
+    app.kubernetes.io/component: nginx-fpm
     app.kubernetes.io/part-of: nextcloud
   ports:
     - port: 80
-      targetPort: nextcloud-http
+      targetPort: nextcloud-nginx-http
       protocol: TCP
-  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nextcloud
   labels:
-    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/name: nginx-fpm
     app.kubernetes.io/instance: nextcloud
-    #app.kubernetes.io/version: "10.8.3"
-    app.kubernetes.io/component: web
+    #app.kubernetes.io/version: "24.0.1"
+    app.kubernetes.io/component: nginx-fpm
     app.kubernetes.io/part-of: nextcloud
     app.kubernetes.io/managed-by: argocd
 spec:
@@ -37,22 +36,31 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: nextcloud
+      app.kubernetes.io/name: nginx-fpm
       app.kubernetes.io/instance: nextcloud
-      app.kubernetes.io/component: web
+      app.kubernetes.io/component: nginx-fpm
       app.kubernetes.io/part-of: nextcloud
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: nextcloud
+        app.kubernetes.io/name: nginx-fpm
         app.kubernetes.io/instance: nextcloud
-        app.kubernetes.io/component: web
+        app.kubernetes.io/component: nginx-fpm
         app.kubernetes.io/part-of: nextcloud
         app.kubernetes.io/managed-by: argocd
     spec:
       containers:
-        - image: nextcloud:24.0.1-apache
-          name: nextcloud
+        - image: nginx:1.21-alpine
+          name: nextcloud-nginx
+          ports:
+            - containerPort: 80
+              name: nextcloud-nginx-http
+              protocol: TCP
+          volumeMounts:
+            - name: nextcloud-nginx-php-fpm
+              mountPath: /etc/nginx/conf.d/
+        - image: nextcloud:24.0.1-fpm-alpine
+          name: nextcloud-fpm
           env:
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
@@ -118,8 +126,8 @@ spec:
             - mountPath: "/var/www/html/custom_apps"
               name: nextcloud-apps-volume
           ports:
-            - containerPort: 80
-              name: nextcloud-http
+            - containerPort: 9000
+              name: nextcloud-fpm
               protocol: TCP
       volumes:
         - name: nextcloud-volume
@@ -131,3 +139,10 @@ spec:
         - name: nextcloud-apps-volume
           persistentVolumeClaim:
             claimName: nextcloud-apps-pvc
+        - name: nextcloud-nginx-php-fpm
+          configMap:
+            name: nextcloud-config
+            items:
+              - key: php_fpm_conf
+                path: php-fpm.conf
+                mode: 0440
