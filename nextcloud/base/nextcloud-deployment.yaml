@@ -17,7 +17,7 @@ spec:
     app.kubernetes.io/part-of: nextcloud
   ports:
     - port: 80
-      targetPort: nextcloud-nginx-http
+      targetPort: nginx-http
       protocol: TCP
 ---
 apiVersion: apps/v1
@@ -54,7 +54,7 @@ spec:
           name: nextcloud-nginx
           ports:
             - containerPort: 80
-              name: nextcloud-nginx-http
+              name: nginx-http
               protocol: TCP
           volumeMounts:
             - name: nextcloud-nginx-php-fpm
@@ -127,7 +127,7 @@ spec:
               name: nextcloud-apps-volume
           ports:
             - containerPort: 9000
-              name: nextcloud-fpm
+              name: fpm
               protocol: TCP
       volumes:
         - name: nextcloud-volume
