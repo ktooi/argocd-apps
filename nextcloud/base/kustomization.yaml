@@ -5,8 +5,8 @@ kind: Kustomization
 resources:
   - mariadb-deployment.yaml
   - mariadb-pvc.yaml
+  - mariadb-configmap.yaml
   - nextcloud-configmap.yaml
-  - nextcloud-config.yaml
   - nextcloud-deployment.yaml
   - nextcloud-pvc.yaml
   - redis-deployment.yaml

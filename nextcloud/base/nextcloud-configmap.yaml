@@ -1,6 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nextcloud-mariadb-config
+  name: nextcloud-config
 data:
-  database: "nextcloud"
+  trusted_domains: ""
+  update: "0"
+  php_memory_limit: "512M"
+  php_upload_limit: "512M"
