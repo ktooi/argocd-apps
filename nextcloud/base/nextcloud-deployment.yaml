@@ -19,6 +19,7 @@ spec:
     - port: 80
       targetPort: nginx-http
       protocol: TCP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -59,6 +60,12 @@ spec:
           volumeMounts:
             - name: nextcloud-nginx-php-fpm
               mountPath: /etc/nginx/conf.d/
+            - mountPath: "/var/www/html"
+              name: nextcloud-volume
+              readOnly: true
+            - mountPath: "/var/www/html/custom_apps"
+              name: nextcloud-apps-volume
+              readOnly: true
         - image: nextcloud:24.0.1-fpm-alpine
           name: nextcloud-fpm
           env:
