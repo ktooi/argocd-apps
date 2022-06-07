@@ -132,10 +132,6 @@ spec:
               name: nextcloud-data-volume
             - mountPath: "/var/www/html/custom_apps"
               name: nextcloud-apps-volume
-          ports:
-            - containerPort: 9000
-              name: fpm
-              protocol: TCP
       volumes:
         - name: nextcloud-volume
           persistentVolumeClaim:
