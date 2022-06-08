@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: netbox-config
+data:
+  debug: "False"
+  banner_top: ""
+  banner_bottom: ""
+  banner_login: ""
+  login_required: "False"
+  login_timeout: "1209600"
+  time_zone: "JST"
