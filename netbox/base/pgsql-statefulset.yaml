@@ -31,6 +31,7 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 3
+  serviceName: pgsql
   selector:
     matchLabels:
       app.kubernetes.io/name: pgsql
