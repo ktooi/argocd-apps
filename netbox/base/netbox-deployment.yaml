@@ -69,7 +69,7 @@ spec:
               value: netbox-pgsql-svc
             - name: DB_USER
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: netbox-pgsql-secret
                   key: username
             - name: DB_PASSWORD
