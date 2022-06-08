@@ -7,6 +7,7 @@ resources:
   - netbox-deployment.yaml
   - pgsql-configmap.yaml
   - pgsql-statefulset.yaml
+  - pgsql-pvc.yaml
   - redis-deployment.yaml
 
 namespace: netbox
