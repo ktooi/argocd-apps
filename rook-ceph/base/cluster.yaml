@@ -259,7 +259,7 @@ spec:
       - name: "k8s-worker03"
         devices: # specific devices to use for storage can be specified for each node
           - name: "sdb"
-      - name: "k8s-worker-amd01"
+      - name: "k8s-wk-amd-01"
         devices: # specific devices to use for storage can be specified for each node
           - name: "sda"
           - name: "sdb"
