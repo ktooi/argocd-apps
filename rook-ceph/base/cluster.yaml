@@ -263,6 +263,9 @@ spec:
         devices: # specific devices to use for storage can be specified for each node
           - name: "sda"
           - name: "sdb"
+      - name: "k8s-wk-amd-02"
+        devices: # specific devices to use for storage can be specified for each node
+          - name: "sda"
     onlyApplyOSDPlacement: false
   # The section for configuring management of daemon disruptions during upgrade or fencing.
   disruptionManagement:
