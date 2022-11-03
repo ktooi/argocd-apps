@@ -9,4 +9,4 @@ data:
   banner_login: ""
   login_required: "False"
   login_timeout: "1209600"
-  time_zone: "JST"
+  time_zone: "Asia/Tokyo"
