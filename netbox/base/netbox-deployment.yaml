@@ -48,7 +48,7 @@ spec:
         app.kubernetes.io/managed-by: argocd
     spec:
       containers:
-        - image: netboxcommunity/netbox:v3.2.4
+        - image: netboxcommunity/netbox:v3.3.7
           name: netbox
           ports:
             - containerPort: 8080
